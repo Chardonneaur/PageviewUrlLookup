@@ -1,0 +1,117 @@
+{% extends 'admin.twig' %}
+
+{% set title %}{{ 'PageviewUrlLookup_MenuTitle'|translate }}{% endset %}
+
+{% block content %}
+<div class="card">
+    <div class="card-content">
+        <h2>{{ 'PageviewUrlLookup_MenuTitle'|translate }}</h2>
+        <p>{{ 'PageviewUrlLookup_Intro'|translate }}</p>
+
+        <form method="post">
+            <input type="hidden" name="module" value="PageviewUrlLookup" />
+            <input type="hidden" name="action" value="index" />
+            <input type="hidden" name="nonce" value="{{ nonce }}" />
+
+            <div class="row">
+                <div class="col s12 m4 input-field">
+                    <select name="idSite" id="idSite">
+                        {% for site in sitesWithAdminAccess %}
+                            <option value="{{ site.idsite }}" {% if site.idsite == idSite %}selected{% endif %}>{{ site.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="idSite">{{ 'General_Website'|translate }}</label>
+                </div>
+                <div class="col s12 m4 input-field">
+                    <input type="date" required id="lookupStartDate" name="lookupStartDate" value="{{ lookupStartDate|e('html_attr') }}" />
+                    <label for="lookupStartDate" class="active">{{ 'PageviewUrlLookup_StartDate'|translate }}</label>
+                </div>
+                <div class="col s12 m4 input-field">
+                    <input type="date" required id="lookupEndDate" name="lookupEndDate" value="{{ lookupEndDate|e('html_attr') }}" />
+                    <label for="lookupEndDate" class="active">{{ 'PageviewUrlLookup_EndDate'|translate }}</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m4 input-field">
+                    <select name="matchType" id="matchType">
+                        <option value="exact" {% if matchType == 'exact' %}selected{% endif %}>{{ 'PageviewUrlLookup_MatchTypeExact'|translate }}</option>
+                        <option value="contains" {% if matchType == 'contains' %}selected{% endif %}>{{ 'PageviewUrlLookup_MatchTypeContains'|translate }}</option>
+                    </select>
+                    <label for="matchType">{{ 'PageviewUrlLookup_MatchType'|translate }}</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 input-field">
+                    <input type="text" required id="urlQuery" name="urlQuery" value="{{ urlQuery|e('html_attr') }}" />
+                    <label for="urlQuery" class="active">{{ 'PageviewUrlLookup_UrlQuery'|translate }}</label>
+                    <p class="form-help">{{ 'PageviewUrlLookup_UrlQueryHelp'|translate }}</p>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">{{ 'PageviewUrlLookup_RunSearch'|translate }}</button>
+        </form>
+    </div>
+</div>
+
+{% if errorMessage %}
+    <div class="alert alert-danger" style="margin-top:16px;">{{ errorMessage }}</div>
+{% endif %}
+
+{% if result %}
+    <div class="card" style="margin-top:16px;">
+        <div class="card-content">
+            <h3>{{ 'PageviewUrlLookup_LastResultTitle'|translate }}</h3>
+            <p>{{ 'PageviewUrlLookup_LastResultSummary'|translate(result.pageviews) }}</p>
+            <p>
+                <strong>{{ 'PageviewUrlLookup_ColumnRange'|translate }}:</strong>
+                {{ result.date_start }} - {{ result.date_end }} ({{ result.timezone }})
+            </p>
+            <p>
+                <strong>{{ 'PageviewUrlLookup_ColumnUrl'|translate }}:</strong>
+                {{ result.url_query }}
+            </p>
+        </div>
+    </div>
+{% endif %}
+
+<div class="card" style="margin-top:16px;">
+    <div class="card-content">
+        <h3>{{ 'PageviewUrlLookup_SavedReportTitle'|translate }}</h3>
+
+        {% if savedRows|length == 0 %}
+            <p>{{ 'PageviewUrlLookup_NoSavedRows'|translate }}</p>
+        {% else %}
+            <table class="entityTable dataTable">
+                <thead>
+                <tr>
+                    <th>{{ 'General_Id'|translate }}</th>
+                    <th>{{ 'General_Date'|translate }}</th>
+                    <th>{{ 'PageviewUrlLookup_ColumnUrl'|translate }}</th>
+                    <th>{{ 'PageviewUrlLookup_ColumnMatchType'|translate }}</th>
+                    <th>{{ 'PageviewUrlLookup_ColumnPeriod'|translate }}</th>
+                    <th>{{ 'PageviewUrlLookup_ColumnRange'|translate }}</th>
+                    <th>{{ 'General_ColumnPageviews'|translate }}</th>
+                    <th>{{ 'UsersManager_User'|translate }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in savedRows %}
+                    <tr>
+                        <td>{{ row.id }}</td>
+                        <td>{{ row.created_at }}</td>
+                        <td>{{ row.url_query }}</td>
+                        <td>{{ row.match_type }}</td>
+                        <td>{{ row.period }} / {{ row.date }}</td>
+                        <td>{{ row.date_start }} - {{ row.date_end }} ({{ row.timezone }})</td>
+                        <td>{{ row.pageviews }}</td>
+                        <td>{{ row.created_by_login }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

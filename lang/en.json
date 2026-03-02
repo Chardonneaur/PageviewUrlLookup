@@ -1,0 +1,28 @@
+{
+    "PageviewUrlLookup": {
+        "PluginDescription": "Search pageview counts for a specific URL directly from visit logs, and save each lookup as a backend report row.",
+        "MenuTitle": "URL Pageview Lookup",
+        "Intro": "Search exact pageviews for a URL in a chosen period/date and store each result in a saved backend report table.",
+        "StartDate": "Start date",
+        "EndDate": "End date",
+        "MatchType": "URL match type",
+        "MatchTypeExact": "Exact URL",
+        "MatchTypeContains": "Contains text",
+        "UrlQuery": "URL to search",
+        "UrlQueryHelp": "For exact mode, use a tracked page URL value (protocol is optional). For contains mode, enter part of the URL/path.",
+        "RunSearch": "Run URL Lookup",
+        "ErrorUrlRequired": "Please enter a URL to search.",
+        "ErrorInvalidDate": "Please select valid start and end dates (YYYY-MM-DD).",
+        "ErrorInvalidDateRange": "Start date must be before or equal to end date.",
+        "ErrorDateRangeTooLarge": "Date range cannot exceed 366 days.",
+        "ErrorGeneric": "An unexpected error occurred. Please try again.",
+        "LastResultTitle": "Last Lookup Result",
+        "LastResultSummary": "Pageviews found: %s",
+        "SavedReportTitle": "Saved URL Pageview Report",
+        "NoSavedRows": "No saved lookup rows yet for this website.",
+        "ColumnUrl": "URL query",
+        "ColumnMatchType": "Match type",
+        "ColumnPeriod": "Period / Date",
+        "ColumnRange": "Resolved date range"
+    }
+}

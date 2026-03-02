@@ -1,0 +1,15 @@
+{
+    "name": "PageviewUrlLookup",
+    "description": "Search exact pageviews for a URL over any period using visit logs and save each result in an admin report list.",
+    "version": "1.0.0",
+    "theme": false,
+    "require": {
+        "matomo": ">=5.0.0-b1,<6.0.0-b1"
+    },
+    "authors": [
+        {
+            "name": "Local Custom Plugin"
+        }
+    ],
+    "license": "GPL v3+"
+}
