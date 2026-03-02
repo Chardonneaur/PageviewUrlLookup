@@ -1,6 +1,6 @@
 {
     "name": "PageviewUrlLookup",
-    "description": "Search exact pageviews for a URL over any period using visit logs and save each result in an admin report list.",
+    "description": "Look up exact pageview counts for any URL directly from the visit log — exact or contains match, timezone-aware date range, results saved to an admin report table.",
     "version": "1.0.0",
     "theme": false,
     "require": {
@@ -8,8 +8,23 @@
     },
     "authors": [
         {
-            "name": "Local Custom Plugin"
+            "name": "Chardonneaur",
+            "homepage": "https://github.com/Chardonneaur"
         }
     ],
-    "license": "GPL v3+"
+    "license": "GPL v3+",
+    "homepage": "https://github.com/Chardonneaur/PageviewUrlLookup",
+    "keywords": [
+        "pageviews",
+        "url",
+        "lookup",
+        "log",
+        "admin",
+        "report",
+        "search"
+    ],
+    "support": {
+        "issues": "https://github.com/Chardonneaur/PageviewUrlLookup/issues",
+        "source": "https://github.com/Chardonneaur/PageviewUrlLookup"
+    }
 }
