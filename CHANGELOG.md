@@ -5,6 +5,13 @@ All notable changes to PageviewUrlLookup are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] — 2026-03-05
+
+### Security
+- Added maximum length validation on URL input (2048 characters)
+- Added semantic date validation using `checkdate()` — invalid calendar dates such as February 30 are now rejected
+- `matchType` now throws an explicit error on unrecognised values instead of silently defaulting to `exact`
+
 ## [1.0.0] — 2026-03-02
 
 ### Added

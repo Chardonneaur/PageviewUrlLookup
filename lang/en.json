@@ -12,6 +12,8 @@
         "UrlQueryHelp": "For exact mode, use a tracked page URL value (protocol is optional). For contains mode, enter part of the URL/path.",
         "RunSearch": "Run URL Lookup",
         "ErrorUrlRequired": "Please enter a URL to search.",
+        "ErrorUrlTooLong": "The URL must not exceed 2048 characters.",
+        "ErrorInvalidMatchType": "Invalid match type selected.",
         "ErrorInvalidDate": "Please select valid start and end dates (YYYY-MM-DD).",
         "ErrorInvalidDateRange": "Start date must be before or equal to end date.",
         "ErrorDateRangeTooLarge": "Date range cannot exceed 366 days.",

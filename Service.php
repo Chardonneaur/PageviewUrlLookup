@@ -27,12 +27,19 @@ class Service
         if ($urlQuery === '') {
             throw new \InvalidArgumentException('PageviewUrlLookup_ErrorUrlRequired');
         }
+        if (strlen($urlQuery) > 2048) {
+            throw new \InvalidArgumentException('PageviewUrlLookup_ErrorUrlTooLong');
+        }
 
         if (!in_array($matchType, [self::MATCH_EXACT, self::MATCH_CONTAINS], true)) {
-            $matchType = self::MATCH_EXACT;
+            throw new \InvalidArgumentException('PageviewUrlLookup_ErrorInvalidMatchType');
         }
 
         if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $startDate) || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $endDate)) {
+            throw new \InvalidArgumentException('PageviewUrlLookup_ErrorInvalidDate');
+        }
+        if (!checkdate((int)substr($startDate, 5, 2), (int)substr($startDate, 8, 2), (int)substr($startDate, 0, 4))
+            || !checkdate((int)substr($endDate, 5, 2), (int)substr($endDate, 8, 2), (int)substr($endDate, 0, 4))) {
             throw new \InvalidArgumentException('PageviewUrlLookup_ErrorInvalidDate');
         }
 

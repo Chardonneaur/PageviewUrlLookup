@@ -1,15 +1,16 @@
 {
     "name": "PageviewUrlLookup",
     "description": "Look up exact pageview counts for any URL directly from the visit log — exact or contains match, timezone-aware date range, results saved to an admin report table.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "theme": false,
     "require": {
         "matomo": ">=5.0.0-b1,<6.0.0-b1"
     },
     "authors": [
         {
-            "name": "Chardonneaur",
-            "homepage": "https://github.com/Chardonneaur"
+            "name": "Ronan Chardonneau",
+            "email": "contact@ronan-chardonneau.fr",
+            "homepage": "https://ronan-chardonneau.fr"
         }
     ],
     "license": "GPL v3+",
@@ -24,7 +25,9 @@
         "search"
     ],
     "support": {
+        "email": "contact@ronan-chardonneau.fr",
         "issues": "https://github.com/Chardonneaur/PageviewUrlLookup/issues",
         "source": "https://github.com/Chardonneaur/PageviewUrlLookup"
-    }
+    },
+    "category": "customisation"
 }
