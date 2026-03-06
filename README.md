@@ -2,12 +2,6 @@
 
 **Look up the exact pageview count for any URL directly from the raw visit log — no archiving required.**
 
-> **Warning**
->
-> This plugin is experimental and was coded using [Claude Code](https://claude.ai).
-> It is provided without any warranty regarding quality, stability, or performance.
-> This is a community project and is not officially supported by Matomo.
-
 ## Description
 
 **PageviewUrlLookup** adds a dedicated admin page under **Administration → URL Pageview Lookup**. Select a site, a date range, a match mode, and a URL — the plugin queries `log_link_visit_action` in real time and instantly shows how many pageviews matched. Every result is automatically saved to a persistent report table so you can compare lookups over time.
@@ -90,3 +84,7 @@ See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 ## License
 
 GPL v3+. See [LICENSE](LICENSE) for details.
+
+---
+
+*This is a community plugin. It is not affiliated with or officially supported by Matomo / InnoCraft.*
