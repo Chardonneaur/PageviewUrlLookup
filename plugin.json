@@ -1,7 +1,7 @@
 {
     "name": "PageviewUrlLookup",
     "description": "Instantly count pageviews for any URL by querying the raw visit log — exact or substring match, timezone-aware date ranges, every result saved to a persistent admin report.",
-    "version": "1.0.1",
+    "version": "0.1.0",
     "theme": false,
     "require": {
         "matomo": ">=5.0.0-b1,<6.0.0-b1"
