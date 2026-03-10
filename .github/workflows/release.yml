@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build zip
+        run: |
+          PLUGIN=$(jq -r .name plugin.json)
+          VERSION=$(jq -r .version plugin.json)
+          mkdir -p /tmp/build/$PLUGIN
+          rsync -a --exclude='.git' --exclude='.github' --exclude='scripts' . /tmp/build/$PLUGIN/
+          cd /tmp/build
+          zip -r ${PLUGIN}-${VERSION}.zip $PLUGIN/
+          echo "ZIP_PATH=/tmp/build/${PLUGIN}-${VERSION}.zip" >> $GITHUB_ENV
+
+      - name: Create GitHub release
+        run: |
+          VERSION=$(jq -r .version plugin.json)
+          gh release create "$VERSION" "$ZIP_PATH" \
+            --title "v$VERSION" \
+            --notes "See CHANGELOG.md for details."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
